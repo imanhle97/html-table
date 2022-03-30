@@ -10,14 +10,13 @@
             height: 50px;
         }
         
-        table,tr,th,td{
+        table,tr,th,td {
             border: 1px solid black;border-collapse: collapse;
             text-align: center;
         }
         th {
             padding: 30px;
         }
-        
     </style>
 </head>
 
@@ -34,16 +33,9 @@
     <div class="mssv">Mã số sinh viên
         <input id="mssv" type="number">
     </div>
-    <script>
-        function myFunction() {
-            var ten = document.getElementById("ten").value;
-            var tuoi = document.getElementById("tuoi").value;
-            var ngaysinh = document.getElementById("ngaysinh").value;
-            var mssv = document.getElementById("mssv").value;
-            document.getElementById("bangthongtin").innerHTML +="<tr><td>" + ten + "</td><td>" + tuoi + "</td><td>" + ngaysinh + "</td><td>" + mssv + "</td></tr>";
-        }
-    </script>
+   
     <button onclick="myFunction()">Add</button>
+    
     <table id="thongtin">
         <tr>
             <th>Tên</th>
@@ -53,7 +45,19 @@
         </tr>
         <tbody id="bangthongtin">
             
-        </tbody id="bangthongtin">
+        </tbody>
+        
     </table>
+    <script>
+        function myFunction() {
+            var ten = document.getElementById("ten").value;
+            var tuoi = document.getElementById("tuoi").value;
+            var ngaysinh = document.getElementById("ngaysinh").value;
+            var mssv = document.getElementById("mssv").value;
+            document.getElementById("bangthongtin").innerHTML +="<tr><td>" + ten + "</td><td>" + tuoi + "</td><td>" + ngaysinh + "</td><td>" + mssv + "</td></tr>";
+        }
+    </script>
+    
+    
 </body>
 </html>
