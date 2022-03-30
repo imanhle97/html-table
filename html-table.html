@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: 50px;
+        }
+        
+        table,tr,th,td{
+            border: 1px solid black;border-collapse: collapse;
+            text-align: center;
+        }
+        th {
+            padding: 30px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="ten">Tên
+        <input id="ten" type="text">
+    </div>
+    <div class="tuoi">Tuổi
+        <input id="tuoi" type="number">
+    </div>
+    <div class="ngaysinh">Ngày sinh
+        <input id="ngaysinh" type="number">
+    </div>
+    <div class="mssv">Mã số sinh viên
+        <input id="mssv" type="number">
+    </div>
+    <script>
+        function myFunction() {
+            var ten = document.getElementById("ten").value;
+            var tuoi = document.getElementById("tuoi").value;
+            var ngaysinh = document.getElementById("ngaysinh").value;
+            var mssv = document.getElementById("mssv").value;
+            document.getElementById("bangthongtin").innerHTML +="<tr><td>" + ten + "</td><td>" + tuoi + "</td><td>" + ngaysinh + "</td><td>" + mssv + "</td></tr>";
+        }
+    </script>
+    <button onclick="myFunction()">Add</button>
+    <table id="thongtin">
+        <tr>
+            <th>Tên</th>
+            <th>Tuổi</th>
+            <th>Ngày sinh</th>
+            <th>MSSV</th>
+        </tr>
+        <tbody id="bangthongtin">
+            
+        </tbody id="bangthongtin">
+    </table>
+</body>
+</html>
