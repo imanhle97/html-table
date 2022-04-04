@@ -17,31 +17,36 @@
         th {
             padding: 30px;
         }
+        .mau1 {
+            background-color: yellow;
+        }
+        .mau2 {
+            background-color: none;
+        }
+        
     </style>
 </head>
 
 <body>
-    <div class="ten">Tên
+    <div>Tên
         <input id="ten" type="text">
     </div>
-    <div class="tuoi">Tuổi
+    <div >Tuổi
         <input id="tuoi" type="number">
     </div>
-    <div class="ngaysinh">Ngày sinh
-        <input id="ngaysinh" type="date">
+    <div>Giới tính
+        <input id="gioitinh" type="text">
     </div>
-    <div class="mssv">Mã số sinh viên
-        <input id="mssv" type="number">
-    </div>
-   
-    <button onclick="myFunction()">Add</button>
     
-    <table id="thongtin">
+    <button onclick="add()">Add</button>
+    
+    
+    <table id="table">
         <tr>
             <th>Tên</th>
             <th>Tuổi</th>
-            <th>Ngày sinh</th>
-            <th>MSSV</th>
+            <th>Giới tính</th>
+            <th style="width: 80px;">Nút</th>
         </tr>
         <tbody id="bangthongtin">
             
@@ -49,14 +54,63 @@
         
     </table>
     <script>
-        function myFunction() {
+        function add() {
+            
             var ten = document.getElementById("ten").value;
             var tuoi = document.getElementById("tuoi").value;
-            var ngaysinh = document.getElementById("ngaysinh").value;
-            var mssv = document.getElementById("mssv").value;
-            document.getElementById("bangthongtin").innerHTML +="<tr><td>" + ten + "</td><td>" + tuoi + "</td><td>" + ngaysinh + "</td><td>" + mssv + "</td></tr>";
+            var gioitinh = document.getElementById("gioitinh").value;
+            if (tuoi < 18 && gioitinh =="Nữ") {
+                document.getElementById("bangthongtin").innerHTML +=
+                 "<tr class='mau1'><td>" + ten +"</td><td>"+ tuoi + "</td><td>"+ gioitinh+ "</td><td>" + '<button onclick="btnDelete(this)">Delete</button>' + 
+                    '<button onclick="selectedRowToInput()">Sửa</button>'+ '<button onclick="donebtn(this)">Done</button>' + "</td></tr>";
+            }
+            else {
+                document.getElementById("bangthongtin").innerHTML +=
+                 "<tr class='mau2'><td>" + ten +"</td><td>"+ tuoi + "</td><td>"+ gioitinh+ "</td><td>" + '<button onclick="btnDelete(this)">Delete</button>' + 
+                    '<button onclick="selectedRowToInput()">Sửa</button>'+ '<button onclick="donebtn(this)">Done</button>' +"</td></tr>";
+            }
+        }
+
+        function btnDelete(r) {
+            var i = r.parentNode.parentNode.rowIndex;
+            document.getElementById("table").deleteRow(i);
+        }
+    
+        function selectedRowToInput()
+            {
+                
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                      rIndex = this.rowIndex;
+                      document.getElementById("ten").value = this.cells[0].innerHTML;
+                      document.getElementById("tuoi").value = this.cells[1].innerHTML;
+                      document.getElementById("gioitinh").value = this.cells[2].innerHTML;
+                    };
+                }
+                
+            }
+        function donebtn (r) {
+            var ten = document.getElementById("ten").value;
+            var tuoi = document.getElementById("tuoi").value;
+            var gioitinh = document.getElementById("gioitinh").value;
+            var i = r.parentNode.parentNode.rowIndex;
+            document.getElementById("table").deleteRow(i);
+            
+            if (tuoi < 18 && gioitinh =="Nữ") {
+                document.getElementById("bangthongtin").innerHTML +=
+                 "<tr class='mau1'><td>" + ten +"</td><td>"+ tuoi + "</td><td>"+ gioitinh+ "</td><td>" + '<button onclick="btnDelete(this)">Delete</button>' + 
+                    '<button onclick="selectedRowToInput()">Sửa</button>'+ '<button onclick="donebtn(this)">Done</button>' + "</td></tr>";
+            }
+            else {
+                document.getElementById("bangthongtin").innerHTML +=
+                 "<tr class='mau2'><td>" + ten +"</td><td>"+ tuoi + "</td><td>"+ gioitinh+ "</td><td>" + '<button onclick="btnDelete(this)">Delete</button>' + 
+                    '<button onclick="selectedRowToInput()">Sửa</button>'+ '<button onclick="donebtn(this)">Done</button>' +"</td></tr>";
+            }
         }
     </script>
+    
     
     
 </body>
